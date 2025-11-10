@@ -24,6 +24,6 @@
             ]
         }
     },
-    "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx"],
+    "include": ["resources/js/**/*.js","resources/js/**/*.jsx", "resources/js/**/*.ts", "resources/js/**/*.tsx"],
     "exclude": ["node_modules"]
 }

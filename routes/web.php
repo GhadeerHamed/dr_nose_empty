@@ -20,15 +20,19 @@ Route::get('/', function () {
 Route::get('/', function () {
     return  Inertia::render('Dashboard');
 })->name('home');
+
 Route::get('/about', function () {
     return  Inertia::render('Dashboard');
 })->name('about');
+
 Route::get('/services', function () {
     return  Inertia::render('Dashboard');
 })->name('services');
+
 Route::get('/results', function () {
     return  Inertia::render('Dashboard');
 })->name('results');
+
 Route::get('/appointment', function () {
     return  Inertia::render('Dashboard');
 })->name('appointment');

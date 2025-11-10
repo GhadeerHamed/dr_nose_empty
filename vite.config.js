@@ -8,6 +8,7 @@ export default defineConfig({
         tailwindcss(), // Use the plugin
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
+            ssr: 'resources/js/ssr.jsx',
             refresh: true,
         }),
         react(),
