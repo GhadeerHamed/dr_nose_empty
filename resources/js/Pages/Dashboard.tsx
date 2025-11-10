@@ -1,26 +1,24 @@
 import AppLayout from '@/Layouts/AppLayout';
 import { Head } from '@inertiajs/react';
+import SectionCard from "@/Components/SectionCard";
+import TitleLarge from "@/Components/TitleLarge";
+import TextMedium from "@/Components/TextMedium";
 
 export default function Dashboard() {
     return (
-        <AppLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
+        <AppLayout>
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're Here
-                        </div>
-                    </div>
+            <SectionCard>
+                <h2 className="text-2xl font-semibold text-tealbrand">Our Services</h2>
+            </SectionCard>
+
+            <SectionCard paleteal>
+                <div className={"text-center w-[800px] m-auto gap-[8px]"}>
+                    <TitleLarge>خدماتي المقدمة في تجميل الأنف</TitleLarge>
+                    <TextMedium>جميع الخدمات التي تخص تجميل الأنف من استشارات، حجز مواعيد، متابعة حالات والتواصل تتم عبر أرقامنا على واتساب مع الطاقم الطبي المختص أو الدكتور أحمد نزار محمد شخصياًً</TextMedium>
                 </div>
-            </div>
+            </SectionCard>
         </AppLayout>
     );
 }
