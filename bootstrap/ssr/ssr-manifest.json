@@ -1,88 +1,25 @@
 {
-  "resources/js/Components/ApplicationLogo.tsx": [
-    "/build/assets/GuestLayout-Cm-cHTBZ.js"
-  ],
-  "resources/js/Components/Checkbox.tsx": [
-    "/build/assets/Login-BakPG1lP.js"
-  ],
-  "resources/js/Components/DangerButton.tsx": [
-    "/build/assets/DeleteUserForm-D446_gTH.js"
-  ],
-  "resources/js/Components/InputError.tsx": [
-    "/build/assets/TextInput-USAHh8ef.js"
-  ],
-  "resources/js/Components/InputLabel.tsx": [
-    "/build/assets/InputLabel-DDs2XNYP.js"
-  ],
-  "resources/js/Components/Modal.tsx": [
-    "/build/assets/DeleteUserForm-D446_gTH.js"
-  ],
   "resources/js/Components/NavBar.tsx": [
-    "/build/assets/AppLayout-ufMovhZT.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Components/NavLink.tsx": [
-    "/build/assets/AppLayout-ufMovhZT.js"
-  ],
-  "resources/js/Components/PrimaryButton.tsx": [
-    "/build/assets/PrimaryButton-DDF1xnxF.js"
-  ],
-  "resources/js/Components/SecondaryButton.tsx": [
-    "/build/assets/DeleteUserForm-D446_gTH.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Components/SectionCard.tsx": [
-    "/build/assets/Dashboard-CloDrX3u.js"
-  ],
-  "resources/js/Components/TextInput.tsx": [
-    "/build/assets/TextInput-USAHh8ef.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Components/TextMedium.tsx": [
-    "/build/assets/Dashboard-CloDrX3u.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Components/TitleLarge.tsx": [
-    "/build/assets/Dashboard-CloDrX3u.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Layouts/AppLayout.tsx": [
-    "/build/assets/AppLayout-ufMovhZT.js"
-  ],
-  "resources/js/Layouts/GuestLayout.tsx": [
-    "/build/assets/GuestLayout-Cm-cHTBZ.js"
-  ],
-  "resources/js/Pages/Auth/ConfirmPassword.tsx": [
-    "/build/assets/ConfirmPassword-YTEtB5vx.js"
-  ],
-  "resources/js/Pages/Auth/ForgotPassword.tsx": [
-    "/build/assets/ForgotPassword-CKiSgbmG.js"
-  ],
-  "resources/js/Pages/Auth/Login.tsx": [
-    "/build/assets/Login-BakPG1lP.js"
-  ],
-  "resources/js/Pages/Auth/Register.tsx": [
-    "/build/assets/Register-jwWUyHVr.js"
-  ],
-  "resources/js/Pages/Auth/ResetPassword.tsx": [
-    "/build/assets/ResetPassword-KbVvxPdy.js"
-  ],
-  "resources/js/Pages/Auth/VerifyEmail.tsx": [
-    "/build/assets/VerifyEmail-Bs3sxQVm.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/Pages/Dashboard.tsx": [
-    "/build/assets/Dashboard-CloDrX3u.js"
-  ],
-  "resources/js/Pages/Profile/Edit.tsx": [
-    "/build/assets/Edit-CegIr5Ue.js"
-  ],
-  "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx": [
-    "/build/assets/DeleteUserForm-D446_gTH.js"
-  ],
-  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx": [
-    "/build/assets/UpdatePasswordForm-DBo2DQJ2.js"
-  ],
-  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx": [
-    "/build/assets/UpdateProfileInformationForm-CiBEo-0-.js"
-  ],
-  "resources/js/Pages/Welcome.tsx": [
-    "/build/assets/Welcome-DE1RzSPL.js"
+    "/build/assets/Dashboard-CmjzG4Yf.js"
   ],
   "resources/js/ssr.jsx": [],
-  "resources/js/ziggy.jsx": []
+  "resources/js/ziggy.js": []
 }

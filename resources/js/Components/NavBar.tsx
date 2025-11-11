@@ -5,21 +5,35 @@ import NavLink from "@/Components/NavLink";
 
 export default function Navbar() {
     const { props } = usePage();
-    const currentLocale = props.locale || "ar"; // passed from Laravel middleware
+    const { locale, currentRouteName } = props;
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const isArabic = currentLocale === "ar";
+    const isArabic = locale === "ar";
 
     const switchLocale = () => {
         const newLocale = isArabic ? "en" : "ar";
-        window.location.href = route("locale.switch", newLocale);
+
+        const url = new URL(window.location.href);
+        const segments = url.pathname.split("/").filter(Boolean);
+
+        // If your locale is the first segment:
+        if (segments.length && (segments[0] === "ar" || segments[0] === "en")) {
+            segments[0] = newLocale;
+        } else {
+            // no locale present → insert it at front
+            segments.unshift(newLocale);
+        }
+
+        url.pathname = "/" + segments.join("/");
+
+        window.location.href = url.toString();
     };
 
     const links = [
-        { name: "home", href: route("home"), label: isArabic ? "الرئيسية" : "Home" },
-        { name: "services", href: route("services"), label: isArabic ? "خدماتي" : "Services" },
-        { name: "results", href: route("results"), label: isArabic ? "عرض النتائج" : "Results" },
-        { name: "about", href: route("about"), label: isArabic ? "عنّي" : "About" },
+        { name: "home", href: route("home", { locale }), label: isArabic ? "الرئيسية" : "Home" },
+        { name: "services", href: route("services", { locale }), label: isArabic ? "خدماتي" : "Services" },
+        { name: "results", href: route("results", { locale }), label: isArabic ? "عرض النتائج" : "Results" },
+        { name: "about", href: route("about", { locale }), label: isArabic ? "عنّي" : "About" },
     ];
 
     return (
@@ -31,7 +45,7 @@ export default function Navbar() {
         >
             <div className="container w-auto mx-10 flex justify-between items-center px-4">
                 {/* Logo */}
-                <Link href={route("home")} className="text-xl font-bold text-gray-800">
+                <Link href={route("home", { locale })} className="text-xl font-bold text-gray-800">
                     {isArabic ? "الدكتور أحمد نزار محمد" : "Dr. Ahmad Nizar Mohammed"}
                 </Link>
 
@@ -41,7 +55,7 @@ export default function Navbar() {
                         <li key={link.href}>
                             <NavLink
                                 href={link.href}
-                                active={route().current(link.name)}
+                                active={currentRouteName === link.name}
                             >
                                 {link.label}
                             </NavLink>
@@ -57,7 +71,7 @@ export default function Navbar() {
                     </li>
                     <li>
                         <Link
-                            href={route("appointment")}
+                            href={route("appointment", { locale })}
                             className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-full transition"
                         >
                             {isArabic ? "احجز موعد" : "Book Now"}

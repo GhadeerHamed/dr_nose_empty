@@ -2,7 +2,7 @@ import { createInertiaApp } from '@inertiajs/react'
 import createServer from '@inertiajs/react/server'
 import ReactDOMServer from 'react-dom/server'
 import {route} from 'ziggy-js';
-import { Ziggy } from './ziggy.jsx';
+import { Ziggy } from './ziggy.js';
 
 createServer((page) =>
     createInertiaApp({

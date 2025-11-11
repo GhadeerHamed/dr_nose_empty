@@ -1,46 +1,53 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
-Route::get('/locale/{locale}', function ($locale) {
-    if (in_array($locale, ['ar', 'en'])) {
-        session(['locale' => $locale]);
-        app()->setLocale($locale);
-    }
-    return redirect()->back();
-})->name('locale.switch');
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 Route::get('/', function () {
-    return  Inertia::render('Dashboard');
-})->name('dashboard');
+    $locale = app()->getLocale() ?? "ar";
+    return redirect("/$locale");
+});
 
-Route::get('/', function () {
-    return  Inertia::render('Dashboard');
-})->name('home');
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => 'en|ar'],
+], function (Router $router) {
+    $router->get('/', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::get('/about', function () {
-    return  Inertia::render('Dashboard');
-})->name('about');
+    $router->get('/', function () {
+        return Inertia::render('Dashboard');
+    })->name('home');
 
-Route::get('/services', function () {
-    return  Inertia::render('Dashboard');
-})->name('services');
+    $router->get('/about', function () {
+        return Inertia::render('Dashboard');
+    })->name('about');
 
-Route::get('/results', function () {
-    return  Inertia::render('Dashboard');
-})->name('results');
+    $router->get('/services', function () {
+        return Inertia::render('Dashboard');
+    })->name('services');
 
-Route::get('/appointment', function () {
-    return  Inertia::render('Dashboard');
-})->name('appointment');
+    $router->get('/results', function () {
+        return Inertia::render('Dashboard');
+    })->name('results');
 
+    $router->get('/appointment', function () {
+        return Inertia::render('Dashboard');
+    })->name('appointment');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+
+Route::any('/{any?}', function () {
+    throw new NotFoundHttpException();
+});
