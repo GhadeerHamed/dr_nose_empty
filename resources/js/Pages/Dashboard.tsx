@@ -1,14 +1,20 @@
+// resources/js/Pages/Dashboard.jsx (Simplified)
+
 import AppLayout from '@/Layouts/AppLayout';
-import { Head } from '@inertiajs/react';
 import SectionCard from "@/Components/SectionCard";
 import TitleLarge from "@/Components/TitleLarge";
 import TextMedium from "@/Components/TextMedium";
+import {usePage} from "@inertiajs/react";
+import {PageProps} from "@/types";
+
 
 export default function Dashboard() {
-    return (
-        <AppLayout>
-            <Head title="Dashboard" />
+    const { props } = usePage<PageProps>();
+    const title = props.locale === 'en' ? 'Dashboard' : "الرئيسية";
 
+    return (
+        // Only pass the dynamic 'title' prop
+        <AppLayout title={title}>
             <SectionCard>
                 <h2 className="text-2xl font-semibold text-tealbrand">Our Services</h2>
             </SectionCard>
@@ -22,3 +28,4 @@ export default function Dashboard() {
         </AppLayout>
     );
 }
+

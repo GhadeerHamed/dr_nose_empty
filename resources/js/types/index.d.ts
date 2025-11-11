@@ -11,7 +11,6 @@ export type PageProps<
     locale: string,
     appName: string,
     currentRouteName: string | null,
-    title: string | undefined,
     description: string | undefined,
     image: string | undefined,
     canonical: string,

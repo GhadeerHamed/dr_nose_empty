@@ -113,30 +113,31 @@ function Navbar() {
     }
   );
 }
-function AppLayout({ children }) {
+function AppLayout({ children, title }) {
   const { props } = usePage();
-  const { appName, appUrl, locale = "ar", title, description = "", image, canonical } = props;
-  const metaTitle = title || (locale === "ar" ? `${appName}| الرئيسية ` : `${appName} | Home`);
+  const { appName, appUrl, locale, description, image, canonical } = props;
+  const metaTitle = `${title} - ${appName}`;
   const metaDescription = description;
   const metaImage = image || `${appUrl}/assets/default-og.jpg`;
+  console.log(props.locale, title, appName, metaTitle);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsxs(Head, { children: [
       /* @__PURE__ */ jsx("html", { lang: locale }),
       /* @__PURE__ */ jsx("title", { children: metaTitle }),
-      /* @__PURE__ */ jsx("meta", { "key-name": "description", name: "description", content: metaDescription }),
-      /* @__PURE__ */ jsx("meta", { name: "robots", content: "index, follow" }),
-      /* @__PURE__ */ jsx("meta", { property: "og:title", content: metaTitle }),
-      /* @__PURE__ */ jsx("meta", { property: "og:description", content: metaDescription }),
-      /* @__PURE__ */ jsx("meta", { property: "og:image", content: metaImage }),
-      /* @__PURE__ */ jsx("meta", { property: "og:url", content: canonical }),
-      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" }),
-      /* @__PURE__ */ jsx("meta", { name: "twitter:title", content: metaTitle }),
-      /* @__PURE__ */ jsx("meta", { name: "twitter:description", content: metaDescription }),
-      /* @__PURE__ */ jsx("meta", { name: "twitter:image", content: metaImage }),
-      /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+      /* @__PURE__ */ jsx("meta", { "head-key": "description", name: "description", content: metaDescription }),
+      /* @__PURE__ */ jsx("meta", { "head-key": "robots", name: "robots", content: "index, follow" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:title", content: metaTitle, "head-key": "og:title" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:description", content: metaDescription, "head-key": "og:description" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:image", content: metaImage, "head-key": "og:image" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:url", content: canonical, "head-key": "og:url" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website", "head-key": "og:type" }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:title", content: metaTitle, "head-key": "twitter:title" }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:description", content: metaDescription, "head-key": "twitter:description" }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:image", content: metaImage, "head-key": "twitter:image" }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image", "head-key": "twitter:card" }),
       /* @__PURE__ */ jsx("link", { rel: "alternate", hrefLang: "en", href: `${appUrl}/en` }),
       /* @__PURE__ */ jsx("link", { rel: "alternate", hrefLang: "ar", href: `${appUrl}/ar` }),
-      /* @__PURE__ */ jsx("link", { rel: "canonical", href: canonical })
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: canonical, "head-key": "canonical" })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "min-h-screen", children: [
       /* @__PURE__ */ jsx(Navbar, {}),
@@ -190,14 +191,19 @@ function TextMedium({
   );
 }
 function Dashboard() {
-  return /* @__PURE__ */ jsxs(AppLayout, { children: [
-    /* @__PURE__ */ jsx(Head, { title: "Dashboard" }),
-    /* @__PURE__ */ jsx(SectionCard, { children: /* @__PURE__ */ jsx("h2", { className: "text-2xl font-semibold text-tealbrand", children: "Our Services" }) }),
-    /* @__PURE__ */ jsx(SectionCard, { paleteal: true, children: /* @__PURE__ */ jsxs("div", { className: "text-center w-[800px] m-auto gap-[8px]", children: [
-      /* @__PURE__ */ jsx(TitleLarge, { children: "خدماتي المقدمة في تجميل الأنف" }),
-      /* @__PURE__ */ jsx(TextMedium, { children: "جميع الخدمات التي تخص تجميل الأنف من استشارات، حجز مواعيد، متابعة حالات والتواصل تتم عبر أرقامنا على واتساب مع الطاقم الطبي المختص أو الدكتور أحمد نزار محمد شخصياًً" })
-    ] }) })
-  ] });
+  const { props } = usePage();
+  console.log(props);
+  const title = props.locale === "en" ? "Dashboard" : "الرئيسية";
+  return (
+    // Only pass the dynamic 'title' prop
+    /* @__PURE__ */ jsxs(AppLayout, { title, children: [
+      /* @__PURE__ */ jsx(SectionCard, { children: /* @__PURE__ */ jsx("h2", { className: "text-2xl font-semibold text-tealbrand", children: "Our Services" }) }),
+      /* @__PURE__ */ jsx(SectionCard, { paleteal: true, children: /* @__PURE__ */ jsxs("div", { className: "text-center w-[800px] m-auto gap-[8px]", children: [
+        /* @__PURE__ */ jsx(TitleLarge, { children: "خدماتي المقدمة في تجميل الأنف" }),
+        /* @__PURE__ */ jsx(TextMedium, { children: "جميع الخدمات التي تخص تجميل الأنف من استشارات، حجز مواعيد، متابعة حالات والتواصل تتم عبر أرقامنا على واتساب مع الطاقم الطبي المختص أو الدكتور أحمد نزار محمد شخصياًً" })
+      ] }) })
+    ] })
+  );
 }
 export {
   Dashboard as default
