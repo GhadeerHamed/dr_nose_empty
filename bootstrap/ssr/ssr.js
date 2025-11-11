@@ -12,7 +12,7 @@ createServer(
     page,
     render: ReactDOMServer.renderToString,
     resolve: (name) => {
-      const pages = /* @__PURE__ */ Object.assign({ "./Pages/Dashboard.tsx": () => import("./assets/Dashboard-CmjzG4Yf.js") });
+      const pages = /* @__PURE__ */ Object.assign({ "./Pages/Dashboard.tsx": () => import("./assets/Dashboard-B6S8eTuO.js") });
       return pages[`./Pages/${name}.tsx`]();
     },
     setup: ({ App, props }) => {

@@ -8,6 +8,12 @@ export interface User {
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
-    locale: string;
-    currentRouteName: string | null;
+    locale: string,
+    appName: string,
+    currentRouteName: string | null,
+    title: string | undefined,
+    description: string | undefined,
+    image: string | undefined,
+    canonical: string,
+    appUrl: string,
 };

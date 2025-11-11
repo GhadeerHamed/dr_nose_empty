@@ -1,4 +1,4 @@
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { Link, usePage, Head } from "@inertiajs/react";
 import { useState } from "react";
 function NavLink({
@@ -113,13 +113,35 @@ function Navbar() {
     }
   );
 }
-function AppLayout({
-  header,
-  children
-}) {
-  return /* @__PURE__ */ jsxs("div", { className: "min-h-screen", children: [
-    /* @__PURE__ */ jsx(Navbar, {}),
-    /* @__PURE__ */ jsx("main", { children })
+function AppLayout({ children }) {
+  const { props } = usePage();
+  const { appName, appUrl, locale = "ar", title, description = "", image, canonical } = props;
+  const metaTitle = title || (locale === "ar" ? `${appName}| الرئيسية ` : `${appName} | Home`);
+  const metaDescription = description;
+  const metaImage = image || `${appUrl}/assets/default-og.jpg`;
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsxs(Head, { children: [
+      /* @__PURE__ */ jsx("html", { lang: locale }),
+      /* @__PURE__ */ jsx("title", { children: metaTitle }),
+      /* @__PURE__ */ jsx("meta", { name: "description", content: metaDescription }),
+      /* @__PURE__ */ jsx("meta", { name: "robots", content: "index, follow" }),
+      /* @__PURE__ */ jsx("meta", { property: "og:title", content: metaTitle }),
+      /* @__PURE__ */ jsx("meta", { property: "og:description", content: metaDescription }),
+      /* @__PURE__ */ jsx("meta", { property: "og:image", content: metaImage }),
+      /* @__PURE__ */ jsx("meta", { property: "og:url", content: canonical }),
+      /* @__PURE__ */ jsx("meta", { property: "og:type", content: "website" }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:title", content: metaTitle }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:description", content: metaDescription }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:image", content: metaImage }),
+      /* @__PURE__ */ jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+      /* @__PURE__ */ jsx("link", { rel: "alternate", hrefLang: "en", href: `${appUrl}/en` }),
+      /* @__PURE__ */ jsx("link", { rel: "alternate", hrefLang: "ar", href: `${appUrl}/ar` }),
+      /* @__PURE__ */ jsx("link", { rel: "canonical", href: canonical })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "min-h-screen", children: [
+      /* @__PURE__ */ jsx(Navbar, {}),
+      /* @__PURE__ */ jsx("main", { children })
+    ] })
   ] });
 }
 function SectionCard({

@@ -34,6 +34,10 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'locale' => app()->getLocale(),
             'currentRouteName' => Route::currentRouteName(),
+            'appName' => __('seo.app_name'),
+            'canonical' => request()->fullUrl(),
+            'appUrl' => config('app.url'),
+            'description' => __('seo.home.description'),
         ];
     }
 }
