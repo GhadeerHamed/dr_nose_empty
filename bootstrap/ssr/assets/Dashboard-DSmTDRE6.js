@@ -123,7 +123,7 @@ function AppLayout({ children }) {
     /* @__PURE__ */ jsxs(Head, { children: [
       /* @__PURE__ */ jsx("html", { lang: locale }),
       /* @__PURE__ */ jsx("title", { children: metaTitle }),
-      /* @__PURE__ */ jsx("meta", { name: "description", content: metaDescription }),
+      /* @__PURE__ */ jsx("meta", { "key-name": "description", name: "description", content: metaDescription }),
       /* @__PURE__ */ jsx("meta", { name: "robots", content: "index, follow" }),
       /* @__PURE__ */ jsx("meta", { property: "og:title", content: metaTitle }),
       /* @__PURE__ */ jsx("meta", { property: "og:description", content: metaDescription }),
